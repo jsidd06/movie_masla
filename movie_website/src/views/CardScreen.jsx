@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   Card,
@@ -10,12 +10,22 @@ import {
   Row,
   Col,
 } from "reactstrap";
-import data from "../Data/Movielist";
+import Axios from "../configs/axios";
 function CardScreen() {
+  const [movie,setMovie] = useState([]);
+  useEffect(() => {
+    Axios.get("/movies")
+      .then((res) => {
+        setMovie(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <Container>
       <Row>
-        {data.map((movie) => {
+        {movie.map((movie) => {
           return (
             <Col md="4">
               <Card key={movie.id}>
