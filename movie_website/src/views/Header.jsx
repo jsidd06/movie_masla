@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Container, Input } from "reactstrap";
 import Axios from "../configs/axios";
-function Header() {
+function Header({ setMovie }) {
   const searchHandler = (e) => {
     Axios.post("/search", {
       query: e.target.value,
     })
       .then(({ data }) => {
-        console.log(data);
+        setMovie(data);
       })
       .catch((err) => {
         console.log(err);

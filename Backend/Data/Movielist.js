@@ -1,7 +1,7 @@
 const data = [
     {
         "id": "1",
-        "title": "pushpa",
+        "title": "raja bhaiya",
         "year": "2020",
         "genre": "action",
         "img": "https://in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/pushpa--the-rise-et00129538-08-12-2021-01-21-46.jpg",
@@ -16,14 +16,14 @@ const data = [
         "link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },{
         "id": "3",
-        "title": "pushpa 3",
+        "title": "akshay kumar ",
         "year": "2020",
         "genre": "action",
         "img": "https://in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/pushpa--the-rise-et00129538-08-12-2021-01-21-46.jpg",
         "link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     },{
         "id": "4",
-        "title": "pushpa 4",
+        "title": "krrish",
         "year": "2020",
         "genre": "action",
         "img": "https://in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/pushpa--the-rise-et00129538-08-12-2021-01-21-46.jpg",

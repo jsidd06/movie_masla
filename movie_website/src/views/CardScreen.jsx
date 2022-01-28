@@ -25,8 +25,8 @@ function CardScreen() {
   }, []);
   return (
     <Container>
-      <Header />
-      <Row>
+      <Header setMovie={setMovie} />
+      <Row className="mt-5">
         {movie.map((movie) => {
           return (
             <Col md="4">
