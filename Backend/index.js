@@ -1,7 +1,9 @@
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 import data from "./Data/Movielist.js";
 import cors from "cors";
-
+import mongoose from "mongoose";
 // create express app
 const app = express();
 
@@ -10,6 +12,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+//
+
+// mongoose db
+mongoose
+  .connect(process.env.MONGODB, {})
+  .then((res) => {
+    console.log("connected to mongodb", res);
+  })
+  .catch((err) => console.log(err));
 // root route
 
 app.get("/", (req, res) => {
