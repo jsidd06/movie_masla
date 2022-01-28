@@ -11,6 +11,7 @@ import {
   Col,
 } from "reactstrap";
 import Axios from "../configs/axios";
+import Header from "./Header";
 function CardScreen() {
   const [movie,setMovie] = useState([]);
   useEffect(() => {
@@ -24,6 +25,7 @@ function CardScreen() {
   }, []);
   return (
     <Container>
+      <Header />
       <Row>
         {movie.map((movie) => {
           return (

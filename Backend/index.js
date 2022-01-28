@@ -8,6 +8,7 @@ const app = express();
 // middleware
 
 app.use(cors());
+app.use(express.json());
 
 // root route
 
@@ -17,6 +18,16 @@ app.get("/", (req, res) => {
 
 app.get("/movies", (req, res) => {
   res.status(200).json(data);
+});
+
+app.post("/search", (req, res) => {
+  res
+    .status(200)
+    .json(
+      data.filter((movie) =>
+        movie.title.toLowerCase().includes(req.body.query.toLowerCase())
+      )
+    );
 });
 
 // spinning server
