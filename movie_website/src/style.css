@@ -27,3 +27,34 @@
     1.1
   ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
+.pagination {
+  display: inline-block;
+  padding-left: 15px;
+  padding-right: 15px;
+  background: rgb(1, 0, 3);
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+.pagination li {
+  display: inline-block;
+  padding: 1em;
+  color: #f1f1f1;
+  border-radius: 5px;
+}
+.pagination .active {
+  background: rgb(29, 20, 165);
+}
+
+::-webkit-scrollbar{
+  width: 3px;
+}  
+
+::-webkit-scrollbar-track{
+  background: initial;
+}
+
+::-webkit-scrollbar-thumb{
+  background: #3f4b4a;
+  border-radius: 50px;
+}

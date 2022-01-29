@@ -14,6 +14,7 @@ import {Link} from "react-router-dom";
 import "../../src/style.css";
 import Axios from "../configs/axios";
 import Header from "./Header";
+import ReactPaginate from "react-paginate";
 function CardScreen() {
   const [movie, setMovie] = useState([]);
   useEffect(() => {
@@ -28,7 +29,7 @@ function CardScreen() {
   return (
     <Container>
       <Header setMovie={setMovie} />
-      <Row className="mt-5">
+      <Row className="mt-2">
         {movie.map((movie) => {
           return (
             <Col md="3">
@@ -41,7 +42,7 @@ function CardScreen() {
                 />
                 <CardTitle className="mt-2 p-2">
                   <Link
-                    to={movie.id}
+                    to={`/download/${movie.id}`}
                     className="cardLinkTitle"
                     style={{ fontSize: 25 }}
                   >
@@ -67,6 +68,18 @@ function CardScreen() {
           );
         })}
       </Row>
+      <ReactPaginate
+        previousLabel={"Back"}
+        nextLabel={"next"}
+        breakLabel={"..."}
+        breakClassName={"break-me"}
+        pageCount={movie.length / 5}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={3}
+        onPageChange={(e) => console.log(e.selected)}
+        containerClassName={"pagination"}
+        activeClassName={"active"}
+      />
     </Container>
   );
 }
