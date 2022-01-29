@@ -10,10 +10,12 @@ import {
   Row,
   Col,
 } from "reactstrap";
+import {Link} from "react-router-dom";
+import "../../src/style.css";
 import Axios from "../configs/axios";
 import Header from "./Header";
 function CardScreen() {
-  const [movie,setMovie] = useState([]);
+  const [movie, setMovie] = useState([]);
   useEffect(() => {
     Axios.get("/movies")
       .then((res) => {
@@ -29,18 +31,37 @@ function CardScreen() {
       <Row className="mt-5">
         {movie.map((movie) => {
           return (
-            <Col md="4">
-              <Card key={movie.id}>
+            <Col md="3">
+              <Card key={movie.id} className="mt-5 cardShadow ">
                 <CardImg
                   top
-                  width="100%"
                   src={movie.img}
                   alt="Card image cap"
+                  className="zoom__hover"
                 />
-                <CardTitle>{movie.title}</CardTitle>
-                <CardSubtitle>{movie.year}</CardSubtitle>
-                <CardText>{movie.description}</CardText>
-                <Button>More</Button>
+                <CardTitle className="mt-2 p-2">
+                  <Link
+                    to={movie.id}
+                    className="cardLinkTitle"
+                    style={{ fontSize: 25 }}
+                  >
+                    {movie.title}
+                  </Link>
+                </CardTitle>
+                {/* <CardText>
+                  <p className="p-3">
+                    <h5>Movie Description</h5>
+                    {movie.description}
+                  </p>
+                  <p className="p-1">
+                    <h5>Movie IMDB</h5>
+                    {movie.rating}
+                  </p>
+                  <p className="p-1">
+                    <h5>Movie Year</h5>
+                    {movie.year}
+                  </p>
+                </CardText> */}
               </Card>
             </Col>
           );
