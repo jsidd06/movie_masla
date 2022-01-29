@@ -1,7 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
-import data from "./Data/Movielist.js";
 import cors from "cors";
 import mongoose from "mongoose";
 // create express app
@@ -58,7 +57,9 @@ app.get("/", (req, res) => {
 });
 
 app.get("/movies", (req, res) => {
-  res.status(200).json(data);
+  Movie.find().then((data) => {
+    res.status(200).json(data);
+  });
 });
 
 app.post("/search", (req, res) => {

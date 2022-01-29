@@ -25,9 +25,9 @@ function UploadData() {
       .then((res) => {
         console.log(res);
         setMovie(res.data);
-        toast("🦄 Wow so easy!", {
+        toast("🦄 Well done baby", {
           position: "top-right",
-          autoClose: 1000,
+          autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
