@@ -16,11 +16,47 @@ app.use(express.json());
 
 // mongoose db
 mongoose
-  .connect(process.env.MONGODB, {})
-  .then((res) => {
-    console.log("connected to mongodb", res);
+  .connect(process.env.MONGODB, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then((req) => {
+    console.log("database is ready baby",);
   })
   .catch((err) => console.log(err));
+
+
+  const newSchema = new mongoose.Schema({
+    title: String,
+    year: String,
+    genre: String,
+    rating: String,
+    description: String,
+    img: String,
+    link: String,
+  });
+
+  const Movie = mongoose.model("Movie", newSchema);
+
+  app.post('/upload', (req, res) => {
+    new Movie({
+      title: req.body.title,
+      year: req.body.year,
+      genre: req.body.genre,
+      rating: req.body.rating,
+      description: req.body.description,
+      img: req.body.img,
+      link: req.body.link,
+    }).save(function(err){
+      if(!err){
+        res.send('success your data is saved')
+      }
+      else{
+        console.log(err.message);
+        res.send('error your data is not saved')
+      }
+    })
+  })
 // root route
 
 app.get("/", (req, res) => {
