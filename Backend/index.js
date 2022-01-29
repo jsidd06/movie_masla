@@ -28,12 +28,19 @@ mongoose
 
   const newSchema = new mongoose.Schema({
     title: String,
+    required: true,
     year: String,
+    required: true,
     genre: String,
+    required: true,
     rating: String,
+    required: true,
     description: String,
+    required: true,
     img: String,
+    required: true,
     link: String,
+    required: true,
   });
 
   const Movie = mongoose.model("Movie", newSchema);
