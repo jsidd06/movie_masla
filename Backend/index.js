@@ -102,13 +102,21 @@ app.get("/movies", (req, res) => {
 });
 
 app.post("/search", (req, res) => {
-  res
-    .status(200)
-    .json(
-      data.filter((movie) =>
-        movie.title.toLowerCase().includes(req.body.query.toLowerCase())
-      )
-    );
+  Movie.find()
+    .then((data) => {
+      res
+        .status(200)
+        .json(
+          data.filter((movie) =>
+            movie.title.toLowerCase().includes(req.body.query.toLowerCase())
+          )
+        );
+    })
+    .catch((err) => {
+      res.status(500).json({
+        error: err,
+      });
+    });
 });
 
 // spinning server
