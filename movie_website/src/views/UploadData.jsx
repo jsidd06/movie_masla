@@ -58,18 +58,21 @@ function UploadData() {
         placeholder="enter the movie title"
         onChange={(e) => setMovieTitle(e.target.value)}
         required
+        type="text"
       />
       <h3> movie description</h3>
       <Input
         placeholder="enter the description"
         onChange={(e) => setMovieDescription(e.target.value)}
         required
+        type="text"
       />
       <h3>movie year</h3>
       <Input
         placeholder="enter the year"
         onChange={(e) => setMovieYear(e.target.value)}
         required
+        type="Number"
       />
       <h3> movie img</h3>
       <Input
