@@ -3,10 +3,7 @@ import {
   Container,
   Card,
   CardImg,
-  CardText,
   CardTitle,
-  CardSubtitle,
-  Button,
   Row,
   Col,
 } from "reactstrap";

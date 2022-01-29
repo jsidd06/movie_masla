@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Container, Input } from "reactstrap";
 import Axios from "../configs/axios";
 function Header({ setMovie }) {

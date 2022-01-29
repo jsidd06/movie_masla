@@ -1,14 +1,5 @@
 import React from 'react';
 import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button,
-  Row,
-  Col,
   Container,
 } from "reactstrap";
 import CardScreen from './CardScreen';
