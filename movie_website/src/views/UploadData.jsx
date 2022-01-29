@@ -57,16 +57,19 @@ function UploadData() {
       <Input
         placeholder="enter the movie title"
         onChange={(e) => setMovieTitle(e.target.value)}
+        required
       />
       <h3> movie description</h3>
       <Input
         placeholder="enter the description"
         onChange={(e) => setMovieDescription(e.target.value)}
+        required
       />
       <h3>movie year</h3>
       <Input
         placeholder="enter the year"
         onChange={(e) => setMovieYear(e.target.value)}
+        required
       />
       <h3> movie img</h3>
       <Input
@@ -74,6 +77,7 @@ function UploadData() {
         type="file"
         alt="none"
         onChange={(e) => setMovieImg(e.target.value)}
+        required
       />
       <h3> movie rating</h3>
       <Input
@@ -81,6 +85,7 @@ function UploadData() {
         type="text"
         alt="none"
         onChange={(e) => setMovieRating(e.target.value)}
+        required
       />
       <h3> movie Genre</h3>
       <Input
@@ -88,6 +93,7 @@ function UploadData() {
         type="text"
         alt="none"
         onChange={(e) => setMovieGenre(e.target.value)}
+        required
       />
       <br />
       <Button className="btn btn-primary mt-3" onClick={handleSubmit}>

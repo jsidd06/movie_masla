@@ -27,20 +27,15 @@ mongoose
 
 
   const newSchema = new mongoose.Schema({
-    title: String,
-    required: true,
-    year: String,
-    required: true,
-    genre: String,
-    required: true,
-    rating: String,
-    required: true,
-    description: String,
-    required: true,
-    img: String,
-    required: true,
-    link: String,
-    required: true,
+    movies: [{
+      title: { type: String, required: true },
+      year: { type: Number, required: true },
+      genre: { type: String, required: true },
+      rating: { type: Number, required: true },
+      description: { type: String, required: true },
+      img: { type: String, required: true },
+      link: { type: String, required: true },
+    }]
   });
 
   const Movie = mongoose.model("Movie", newSchema);
@@ -54,15 +49,9 @@ mongoose
       description: req.body.description,
       img: req.body.img,
       link: req.body.link,
-    }).save(function(err){
-      if(!err){
-        res.send('success your data is saved')
-      }
-      else{
-        console.log(err.message);
-        res.send('error your data is not saved')
-      }
-    })
+    }).save().then(() => {
+      res.send("data is saved");
+    });
   })
 // root route
 
