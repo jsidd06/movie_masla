@@ -7,6 +7,10 @@ import Header from "./Header";
 import ReactPaginate from "react-paginate";
 function CardScreen() {
   const [movie, setMovie] = useState([]);
+  const [noOfPages, setNoOfPages] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [currentItem, setCurrentItem] = useState([]);
+  const [itemsPerPage, setItemsPerPage] = useState(8);
   useEffect(() => {
     Axios.get("/movies")
       .then((res) => {
@@ -16,11 +20,22 @@ function CardScreen() {
         console.log(err);
       });
   }, []);
+
+  useEffect(() => {
+    const endOffset = currentPage + itemsPerPage;
+    setCurrentItem(movie.slice(currentPage, endOffset));
+    setNoOfPages(Math.ceil(movie.length / itemsPerPage));
+  }, [currentPage, itemsPerPage, movie]);
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % movie.length;
+    setCurrentPage(newOffset);
+  };
+
   return (
     <Container>
       <Header setMovie={setMovie} />
       <Row className="mt-2">
-        {movie.map((movie) => {
+        {currentItem.map((movie) => {
           return (
             <Col md="3">
               <Card key={movie.id} className="mt-5 cardShadow ">
@@ -63,10 +78,10 @@ function CardScreen() {
         nextLabel={"next"}
         breakLabel={"..."}
         breakClassName={"break-me"}
-        pageCount={movie.length / 5}
+        pageCount={movie.length / itemsPerPage}
         marginPagesDisplayed={2}
         pageRangeDisplayed={3}
-        onPageChange={(e) => console.log(e.selected)}
+        onPageChange={handlePageClick}
         containerClassName={"pagination"}
         activeClassName={"active"}
       />
