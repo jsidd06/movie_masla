@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {
-  Container,
-  Card,
-  CardImg,
-  CardTitle,
-  Row,
-  Col,
-} from "reactstrap";
-import {Link} from "react-router-dom";
+import { Container, Card, CardImg, CardTitle, Row, Col } from "reactstrap";
+import { Link } from "react-router-dom";
 import "../../src/style.css";
 import Axios from "../configs/axios";
 import Header from "./Header";

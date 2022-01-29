@@ -3,11 +3,24 @@ dotenv.config();
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+import multer from "multer";
+import { nanoid } from "nanoid";
+import _ from "lodash";
 // create express app
 const app = express();
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads");
+  },
+  filename: function (req, file, cb) {
+    cb(null, _.kebabCase(req.body.name) + "-" + nanoid() + ".jpg");
+  },
+});
+
+const upload = multer({ storage: storage });
 
 // middleware
-
+app.use("/uploads", express.static("uploads"));
 app.use(cors());
 app.use(express.json());
 
@@ -20,36 +33,54 @@ mongoose
     useUnifiedTopology: true,
   })
   .then((req) => {
-    console.log("database is ready baby",);
+    console.log("database is ready baby");
   })
   .catch((err) => console.log(err));
 
+const newSchema = new mongoose.Schema({
+  title: String,
+  year: Number,
+  genre: String,
+  rating: String,
+  description: String,
+  img: String,
+  link: String,
+});
 
-  const newSchema = new mongoose.Schema({
-    title: String,
-    year: Number,
-    genre: String,
-    rating: String,
-    description: String,
-    img: String,
-    link: String,
-  });
+const Movie = mongoose.model("Movie", newSchema);
 
-  const Movie = mongoose.model("Movie", newSchema);
+// app.post('/upload', (req, res) => {
+//   new Movie({
+//     title: req.body.title,
+//     year: req.body.year,
+//     genre: req.body.genre,
+//     rating: req.body.rating,
+//     description: req.body.description,
+//     img: req.body.img,
+//     link: req.body.link,
+//   }).save().then(() => {
+//     res.send("data is saved");
+//   });
+// })
 
-  app.post('/upload', (req, res) => {
-    new Movie({
-      title: req.body.title,
-      year: req.body.year,
-      genre: req.body.genre,
-      rating: req.body.rating,
-      description: req.body.description,
-      img: req.body.img,
-      link: req.body.link,
-    }).save().then(() => {
+app.post("/upload", upload.single("img"), function (req, res) {
+  // req.file is the `avatar` file
+  // req.body will hold the text fields, if there were any
+
+  new Movie({
+    title: req.body.title,
+    year: req.body.year,
+    genre: req.body.genre,
+    rating: req.body.rating,
+    description: req.body.description,
+    img: `http://localhost:5000/${req.file.path}`,
+    link: req.body.link,
+  })
+    .save()
+    .then(() => {
       res.send("data is saved");
     });
-  })
+});
 // root route
 
 app.get("/", (req, res) => {

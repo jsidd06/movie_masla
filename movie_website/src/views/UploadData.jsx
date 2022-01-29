@@ -14,14 +14,14 @@ function UploadData() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    Axios.post("/upload", {
-      title: movieTitle,
-      description: movieDescription,
-      rating: movieRating,
-      img: movieImg,
-      year: movieYear,
-      genre: genreMovie,
-    })
+    const fd = new FormData();
+    fd.append("title", movieTitle);
+    fd.append("description", movieDescription);
+    fd.append("rating", movieRating);
+    fd.append("img", movieImg);
+    fd.append("year", movieYear);
+    fd.append("genre", genreMovie);
+    Axios.post("/upload", fd)
       .then((res) => {
         console.log(res);
         setMovie(res.data);
@@ -74,7 +74,7 @@ function UploadData() {
         placeholder="enter the img"
         type="file"
         alt="none"
-        onChange={(e) => setMovieImg(e.target.value)}
+        onChange={(e) => setMovieImg(e.target.files[0])}
       />
       <h3> movie rating</h3>
       <Input
