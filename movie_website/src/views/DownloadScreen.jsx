@@ -23,16 +23,24 @@ function DownloadScreen() {
           top
           src={movie.img}
           className="zoom__hover mt-2"
-          style={{ maxWidth: 200, maxHeight: 200, margin: "auto" }}
           alt="Card image cap"
+          style={{ maxWidth: "20rem", minWidth: "10rem",margin:"auto" }}
         />
         <h3 className="mt-2">Movie Description :- {movie.description}</h3>
         <h3>Movie Genre :- {movie.genre}</h3>
-        <h3>Movie IMDb Rating :- {movie.rating}</h3> <h3>Movie Year :-{movie.year}</h3>
+        <h3>Movie IMDb Rating :- {movie.rating}</h3>{" "}
+        <h3>Movie Year :-{movie.year}</h3>
         <a
           href={`${movie.link}`}
           type="url"
-          style={{ backgroundColor: "#B33030",maxWidth: 200, maxHeight: 200, margin: "auto",fontSize: "20px",color: "white" }}
+          style={{
+            backgroundColor: "#B33030",
+            maxWidth: 200,
+            maxHeight: 200,
+            margin: "auto",
+            fontSize: "20px",
+            color: "white",
+          }}
           className="btn btn-btn-danger"
         >
           Click here to download Now

@@ -19,7 +19,8 @@
 }
 .zoom__hover {
   transition: transform 1s; /* Animation */
-  max-height: 50rem;
+  min-height: 30rem;
+  max-height: 30rem;
 }
 
 .zoom__hover:hover {
