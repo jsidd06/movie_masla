@@ -14,7 +14,7 @@ function CardScreen() {
   useEffect(() => {
     Axios.get("/movies")
       .then((res) => {
-        setMovie(res.data);
+        setMovie(res.data.reverse());
       })
       .catch((err) => {
         console.log(err);
