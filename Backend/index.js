@@ -74,14 +74,13 @@ const Movie = mongoose.model("Movie", newSchema);
 app.post("/upload", upload.single("img"), function (req, res) {
   // req.file is the `avatar` file
   // req.body will hold the text fields, if there were any
-
   new Movie({
     title: req.body.title,
     year: req.body.year,
     genre: req.body.genre,
     rating: req.body.rating,
     description: req.body.description,
-    img: `http://localhost:5000/${req.file.path}`,
+    img: req.hostname + req.file.path,
     link: req.body.link,
   })
     .save()
@@ -93,6 +92,16 @@ app.post("/upload", upload.single("img"), function (req, res) {
 
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Server is up and running" });
+});
+
+app.get("/movie", (req, res) => {
+  Movie.findById(req.query.id)
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      res.status(500).json({ message: err });
+    });
 });
 
 app.get("/movies", (req, res) => {

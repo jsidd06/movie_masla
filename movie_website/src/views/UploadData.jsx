@@ -10,6 +10,7 @@ function UploadData() {
   const [movieImg, setMovieImg] = useState("");
   const [movieYear, setMovieYear] = useState("");
   const [genreMovie, setMovieGenre] = useState("");
+  const [linkMovie, setMovieLink] = useState("");
   const [movie, setMovie] = useState([]);
 
   const handleSubmit = (e) => {
@@ -21,6 +22,7 @@ function UploadData() {
     fd.append("img", movieImg);
     fd.append("year", movieYear);
     fd.append("genre", genreMovie);
+    fd.append("link", linkMovie);
     Axios.post("/upload", fd)
       .then((res) => {
         console.log(res);
@@ -51,44 +53,51 @@ function UploadData() {
   return (
     <Container style={{ textAlign: "center" }}>
       <h1>Upload Data</h1>
-      <h3> movie title</h3>
+      <h3> Movie title</h3>
       <Input
         placeholder="enter the movie title"
         onChange={(e) => setMovieTitle(e.target.value)}
         type="text"
       />
-      <h3> movie description</h3>
+      <h3> Movie description</h3>
       <Input
         placeholder="enter the description"
         onChange={(e) => setMovieDescription(e.target.value)}
         type="text"
       />
-      <h3>movie year</h3>
+      <h3>Movie year</h3>
       <Input
         placeholder="enter the year"
         onChange={(e) => setMovieYear(e.target.value)}
         type="Number"
       />
-      <h3> movie img</h3>
+      <h3> Movie img</h3>
       <Input
         placeholder="enter the img"
         type="file"
         alt="none"
         onChange={(e) => setMovieImg(e.target.files[0])}
       />
-      <h3> movie rating</h3>
+      <h3> Movie rating</h3>
       <Input
         placeholder="enter the rating"
         type="text"
         alt="none"
         onChange={(e) => setMovieRating(e.target.value)}
       />
-      <h3> movie Genre</h3>
+      <h3> Movie Genre</h3>
       <Input
         placeholder="enter the genre"
         type="text"
         alt="none"
         onChange={(e) => setMovieGenre(e.target.value)}
+      />
+      <h3> Movie Link</h3>
+      <Input
+        placeholder="enter the link"
+        type="text"
+        alt="none"
+        onChange={(e) => setMovieLink(e.target.value)}
       />
       <br />
       <Button className="btn btn-primary mt-3" onClick={handleSubmit}>

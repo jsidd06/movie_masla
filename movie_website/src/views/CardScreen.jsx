@@ -38,7 +38,7 @@ function CardScreen() {
         {currentItem.map((movie) => {
           return (
             <Col md="3">
-              <Card key={movie.id} className="mt-5 cardShadow ">
+              <Card key={movie._id} className="mt-5 cardShadow ">
                 <CardImg
                   top
                   src={movie.img}
@@ -47,7 +47,7 @@ function CardScreen() {
                 />
                 <CardTitle className="mt-2 p-2">
                   <Link
-                    to={`/download/${movie.id}`}
+                    to={`/download/${movie._id}`}
                     className="cardLinkTitle"
                     style={{ fontSize: 25 }}
                   >
