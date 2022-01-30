@@ -7,7 +7,13 @@ import multer from "multer";
 import { nanoid } from "nanoid";
 import _ from "lodash";
 // create express app
+
+// CONSTANTS
+const PORT = process.env.port || 5000;
+
 const app = express();
+
+console.log(process.env.NODE_ENV);
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "uploads");
@@ -80,7 +86,7 @@ app.post("/upload", upload.single("img"), function (req, res) {
     genre: req.body.genre,
     rating: req.body.rating,
     description: req.body.description,
-    img: `http://localhost:5000/${req.file.path}`,
+    img: `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`,
     link: req.body.link,
   })
     .save()
@@ -129,6 +135,6 @@ app.post("/search", (req, res) => {
 });
 
 // spinning server
-app.listen(5000, () => {
-  console.log("Server is running on port 5000");
+app.listen(PORT, () => {
+  console.log("Server is running on port" + PORT);
 });
