@@ -18,18 +18,18 @@ function DownloadScreen() {
   return (
     <Container>
       <Card style={{ textAlign: "center" }} className="mt-5">
-        <h1>{movie.title}</h1>
+        <h1 className="mt-1">{movie.title}</h1>
         <CardImg
           top
           src={movie.img}
-          className="zoom__hover mt-2"
+          className="mt-2"
           alt="Card image cap"
-          style={{ maxWidth: "20rem", minWidth: "10rem",margin:"auto" }}
+          style={{ maxHeight: "30rem", minHeight: "30rem",margin:"auto",maxWidth:"20rem",minWidth:"20rem",borderRadius: "5px" }}
         />
-        <h3 className="mt-2">Movie Description :- {movie.description}</h3>
-        <h3>Movie Genre :- {movie.genre}</h3>
-        <h3>Movie IMDb Rating :- {movie.rating}</h3>{" "}
-        <h3>Movie Year :-{movie.year}</h3>
+        <h5 className="mt-4">Movie Description :- {movie.description}</h5>
+        <h6 className="mt-2">Movie Genre :- {movie.genre}</h6>
+        <h6 className="mt-2">Movie IMDb Rating :- {movie.rating}</h6>{" "}
+        <h6 className="mt-2">Movie Year :-{movie.year}</h6>
         <a
           href={`${movie.link}`}
           type="url"
@@ -41,7 +41,7 @@ function DownloadScreen() {
             fontSize: "20px",
             color: "white",
           }}
-          className="btn btn-btn-danger"
+          className="btn btn-btn-danger mt-2"
         >
           Click here to download Now
         </a>
