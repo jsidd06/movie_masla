@@ -34,16 +34,19 @@
   background: rgb(1, 0, 3);
   margin-top: 20px;
   border-radius: 5px;
+  font-size: 1rem;
 }
 
 .pagination li {
   display: inline-block;
   padding: 1em;
   color: #f1f1f1;
+  background-color: rgb(15, 3, 3);
   border-radius: 5px;
+  text-decoration: none;
 }
 .pagination .active {
-  background: rgb(29, 20, 165);
+  background: rgb(96, 87, 221);
 }
 
 ::-webkit-scrollbar{

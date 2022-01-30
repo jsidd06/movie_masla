@@ -54,20 +54,6 @@ function CardScreen() {
                     {movie.title}
                   </Link>
                 </CardTitle>
-                {/* <CardText>
-                  <p className="p-3">
-                    <h5>Movie Description</h5>
-                    {movie.description}
-                  </p>
-                  <p className="p-1">
-                    <h5>Movie IMDB</h5>
-                    {movie.rating}
-                  </p>
-                  <p className="p-1">
-                    <h5>Movie Year</h5>
-                    {movie.year}
-                  </p>
-                </CardText> */}
               </Card>
             </Col>
           );
@@ -75,7 +61,7 @@ function CardScreen() {
       </Row>
       <ReactPaginate
         previousLabel={"Back"}
-        nextLabel={"next"}
+        nextLabel={"Next"}
         breakLabel={"..."}
         breakClassName={"break-me"}
         pageCount={movie.length / itemsPerPage}

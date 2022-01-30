@@ -80,7 +80,7 @@ app.post("/upload", upload.single("img"), function (req, res) {
     genre: req.body.genre,
     rating: req.body.rating,
     description: req.body.description,
-    img: req.hostname + req.file.path,
+    img: `http://localhost:5000/${req.file.path}`,
     link: req.body.link,
   })
     .save()

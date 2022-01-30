@@ -28,14 +28,15 @@ function DownloadScreen() {
         />
         <h3 className="mt-2">Movie Description :- {movie.description}</h3>
         <h3>Movie Genre :- {movie.genre}</h3>
-        <h3>Movie Rating :- {movie.rating}</h3> <h3>Movie Year :-{movie.year}</h3>
-        <Link
-          to={`${movie.link}`}
+        <h3>Movie IMDb Rating :- {movie.rating}</h3> <h3>Movie Year :-{movie.year}</h3>
+        <a
+          href={`${movie.link}`}
+          type="url"
           style={{ backgroundColor: "#B33030",maxWidth: 200, maxHeight: 200, margin: "auto",fontSize: "20px",color: "white" }}
           className="btn btn-btn-danger"
         >
           Click here to download Now
-        </Link>
+        </a>
       </Card>
     </Container>
   );
